@@ -1,0 +1,11 @@
+# exclude terraform kitchen
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+**/secret.tfvars
+config.*.backend
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
