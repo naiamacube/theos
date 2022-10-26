@@ -1,5 +1,5 @@
-output "dokimi-backend-storage-id" {
-  value = aws_s3_bucket_versioning.backend-storage.id
+output "dokimi-backend-storage-arn" {
+  value = aws_s3_bucket.backend-storage.arn
   sensitive = true
 }
 
