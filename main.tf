@@ -1,4 +1,14 @@
 terraform {
+
+  cloud {
+    organization = "naiama"
+    hostname = "app.terraform.io"
+
+    workspaces {
+      name = "theos"
+    }
+  }
+
   required_providers {
     aws = {
       source = "hashicorp/aws"

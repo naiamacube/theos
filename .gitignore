@@ -3,7 +3,8 @@
 *.tfstate
 *.tfstate.*
 **/secret.tfvars
-config.*.backend
+backend.tf
+config.*.tfbackend
 crash.log
 override.tf
 override.tf.json
