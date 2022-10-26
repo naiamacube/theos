@@ -25,6 +25,7 @@ terraform {
 
 provider "aws" {
   // TODO: switch to token, by configuring an AWS Identity Provider
+  region = var.aws_region
   access_key = var.aws_access_key_id
   secret_key = var.aws_secret_access_key
 }
