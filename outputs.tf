@@ -4,7 +4,7 @@ output "dokimi-backend-storage-id" {
 }
 
 output "dokimi-backend-locking-arn" {
-  value = aws_s3_bucket_versioning.backend-storage.arn
+  value = aws_dynamodb_table.backend-locking.arn
   sensitive = true
 }
 
