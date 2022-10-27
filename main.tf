@@ -23,19 +23,14 @@ terraform {
   required_version = "> 1.2.8"
 }
 
-provider "aws" {
-  // TODO: switch to token, by configuring an AWS Identity Provider
-  access_key = var.aws_access_key_id
-  secret_key = var.aws_secret_access_key
-}
-
-provider "google" {
-  // TODO: switch to access_token w/ circle-ci orb google-cloud-cli
-  credentials = file(var.gcp_credentials)
-}
-
 module "dokimi" {
   source = "./modules/dokimi"
+
+  aws_access_key = var.aws_access_key_id
+  aws_secret_key = var.aws_secret_access_key
   aws_region = var.dokimi_aws_region
   aws_backend = var.dokimi_aws_backend
+
+  gcp_credentials = file(var.gcp_credentials)
+  gcp_region = var.gcp_region
 }

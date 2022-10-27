@@ -27,3 +27,9 @@ variable "dokimi_aws_backend" {
   type        = string
   sensitive   = true
 }
+
+variable "dokimi_gcp_region" {
+  description = "Dokimi GCP Region"
+  type        = string
+  sensitive   = true
+}
