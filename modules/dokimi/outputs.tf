@@ -8,3 +8,12 @@ output "dokimi-backend-locking-arn" {
   sensitive = true
 }
 
+output "tf_key" {
+  value = aws_iam_access_key.tf.id
+  sensitive = true
+}
+
+output "tf_secret" {
+  value = aws_iam_access_key.tf.encrypted_secret
+  sensitive = true
+}

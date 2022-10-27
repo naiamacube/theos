@@ -65,3 +65,52 @@ resource "aws_dynamodb_table" "backend-locking" {
     type = "S"
   }
 }
+
+resource "aws_iam_user" "tf" {
+  name = var.dokimi_iam
+  path = "/"
+}
+
+resource "aws_iam_policy" "tf" {
+  name = var.dokimi_iam
+  path = "/"
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = ["s3:ListBucket",]
+        Resource = aws_s3_bucket.backend-storage.arn
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:GetObject",
+          "s3:PutObject",
+          "s3:DeleteObject"
+        ]
+        Resource = "${aws_s3_bucket.backend-storage.arn}/dokimi.tfstate"
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "dynamodb:DescribeTable",
+          "dynamodb:GetItem",
+          "dynamodb:PutItem",
+          "dynamodb:DeleteItem"
+        ]
+        Resource = aws_dynamodb_table.backend-locking.arn
+      }
+    ]
+  })
+}
+
+resource "aws_iam_user_policy_attachement" "tf" {
+  user = aws_iam_user.tf.name
+  policy_arn = aws_iam_policy.tf.arn
+}
+
+resource "aws_iam_access_key" "tf" {
+  user = aws_iam_user.tf.name
+  pgp_key = var.pgp_key
+}
