@@ -23,6 +23,10 @@ terraform {
   required_version = "> 1.2.8"
 }
 
+provider "aws" { }
+
+provider "gcp" { }
+
 module "dokimi" {
   source = "./modules/dokimi"
 
