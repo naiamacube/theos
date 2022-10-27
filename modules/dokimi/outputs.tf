@@ -1,19 +1,19 @@
-output "dokimi-backend-storage-arn" {
+output "backend-storage-arn" {
   value = aws_s3_bucket.backend-storage.arn
   sensitive = true
 }
 
-output "dokimi-backend-locking-arn" {
+output "backend-locking-arn" {
   value = aws_dynamodb_table.backend-locking.arn
   sensitive = true
 }
 
-output "tf_key" {
+output "iam-tf-key" {
   value = aws_iam_access_key.tf.id
   sensitive = true
 }
 
-output "tf_secret" {
+output "iam-tf-secret" {
   value = aws_iam_access_key.tf.encrypted_secret
   sensitive = true
 }
