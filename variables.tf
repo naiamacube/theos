@@ -40,6 +40,12 @@ variable "dokimi_aws_backend" {
   sensitive   = true
 }
 
+variable "dokimi_aws_iam" {
+  description = "Dokimi AWS IAM name"
+  type        = string
+  sensitive   = true
+}
+
 variable "dokimi_gcp_region" {
   description = "Dokimi GCP Region"
   type        = string

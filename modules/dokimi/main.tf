@@ -67,12 +67,12 @@ resource "aws_dynamodb_table" "backend-locking" {
 }
 
 resource "aws_iam_user" "tf" {
-  name = var.dokimi_iam
+  name = var.aws_iam
   path = "/"
 }
 
 resource "aws_iam_policy" "tf" {
-  name = var.dokimi_iam
+  name = var.aws_iam
   path = "/"
   policy = jsonencode({
     Version = "2012-10-17"
@@ -105,7 +105,7 @@ resource "aws_iam_policy" "tf" {
   })
 }
 
-resource "aws_iam_user_policy_attachement" "tf" {
+resource "aws_iam_user_policy_attachment" "tf" {
   user = aws_iam_user.tf.name
   policy_arn = aws_iam_policy.tf.arn
 }

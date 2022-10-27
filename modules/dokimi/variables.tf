@@ -22,6 +22,12 @@ variable "aws_backend" {
   sensitive   = true
 }
 
+variable "aws_iam" {
+  description = "AWS IAM name"
+  type        = string
+  sensitive   = true
+}
+
 variable "gcp_credentials" {
   description = "GCP SA Private Key"
   type        = string
