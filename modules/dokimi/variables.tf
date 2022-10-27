@@ -1,3 +1,9 @@
+variable "pgp_key" {
+  description = "PGP Public Key"
+  type        = string
+  sensitive   = true
+}
+
 variable "aws_access_key" {
   description = "AWS IAM User Access Key ID"
   type        = string
