@@ -1,5 +1,4 @@
 terraform {
-
   cloud {
     organization = "naiama"
     hostname = "app.terraform.io"
@@ -8,24 +7,7 @@ terraform {
       name = "theos"
     }
   }
-
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-      version = "4.32.0"
-    }
-    google = {
-      source = "hashicorp/google"
-      version = "4.37.0"
-    }
-  }
-
-  required_version = "> 1.2.8"
 }
-
-provider "aws" { }
-
-provider "gcp" { }
 
 module "dokimi" {
   source = "./modules/dokimi"
