@@ -17,6 +17,6 @@ module "dokimi" {
   aws_region = var.dokimi_aws_region
   aws_backend = var.dokimi_aws_backend
 
-  gcp_credentials = file(var.gcp_credentials)
+  gcp_credentials = var.gcp_credentials
   gcp_region = var.dokimi_gcp_region
 }
