@@ -33,3 +33,7 @@ provider "google" {
   // TODO: switch to access_token w/ circle-ci orb google-cloud-cli
   credentials = file(var.gcp_credentials)
 }
+
+module "dokimi" {
+  source = "./modules/dokimi"
+}
