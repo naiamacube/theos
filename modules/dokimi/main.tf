@@ -19,7 +19,7 @@ provider "aws" {
   region = var.aws_region
 }
 
-provider "gcp" {
+provider "google" {
   credentials = var.gcp_credentials
   region = var.gcp_region
 }
