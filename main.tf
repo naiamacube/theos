@@ -36,4 +36,6 @@ provider "google" {
 
 module "dokimi" {
   source = "./modules/dokimi"
+  aws_region = var.dokimi_aws_region
+  aws_backend = var.dokimi_aws_backend
 }

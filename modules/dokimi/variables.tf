@@ -1,11 +1,11 @@
-variable "dokimi_aws_region" {
-  description = "Dokimi AWS Region"
+variable "aws_region" {
+  description = "AWS Region"
   type        = string
   sensitive   = true
 }
 
-variable "dokimi_aws_backend" {
-  description = "Dokimi AWS Backend name"
+variable "aws_backend" {
+  description = "AWS Backend name"
   type        = string
   sensitive   = true
 }
