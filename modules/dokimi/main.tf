@@ -1,9 +1,9 @@
 provider "aws" {
-  region = var.dokimi_aws_region
+  region = var.aws_region
 }
 
 resource "aws_s3_bucket" "backend-storage" {
-  bucket = var.dokimi_aws_backend
+  bucket = var.aws_backend
   object_lock_enabled = true
 }
 
@@ -33,7 +33,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "backend-storage" 
 }
 
 resource "aws_dynamodb_table" "backend-locking" {
-  name = var.dokimi_aws_backend
+  name = var.aws_backend
   hash_key = "LockID"
   read_capacity = 1
   write_capacity = 1
