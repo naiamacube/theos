@@ -10,8 +10,20 @@ variable "aws_secret_access_key" {
   sensitive   = true
 }
 
+variable "aws_region" {
+  description = "AWS Region"
+  type        = string
+  sensitive   = true
+}
+
 variable "gcp_credentials" {
   description = "GCP SA Private Key"
+  type        = string
+  sensitive   = true
+}
+
+variable "gcp_region" {
+  description = "GCP Region"
   type        = string
   sensitive   = true
 }
