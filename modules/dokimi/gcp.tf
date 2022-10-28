@@ -8,7 +8,7 @@ data "google_organization" "org" {
 
 data "google_active_folder" "main" {
   display_name = var.subspace
-  parent       = "organizations/${google_organization.org.org_id}"
+  parent       = "organizations/${data.google_organization.org.org_id}"
 }
 
 resource "google_project" "dokimi" {
