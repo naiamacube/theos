@@ -45,11 +45,10 @@ module "dokimi" {
   gcp_credentials = var.gcp_credentials
 }
 
-module "dokimi" {
+module "alisida" {
   source          = "./modules/alisida"
 
-  domain          = var.domain
-  subspace        = var.subspace
+  organization    = var.organization
   pgp_key         = var.pgp_key
 
   aws_access_key  = var.aws_access_key_id
