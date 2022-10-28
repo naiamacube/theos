@@ -9,7 +9,7 @@ data "google_organization" "org" {
 resource "google_project" "dokimi" {
   name       = local.project
   project_id = local.project
-  org_id     = google_organization.org.org_id
+  org_id     = data.google_organization.org.org_id
   folder_id  = var.subspace
 }
 
@@ -27,12 +27,17 @@ resource "google_service_account_key" "tf" {
   service_account_id = google_service_account.tf.id
 }
 
-resource "google_iam_policy" "tf" {
+data "google_iam_policy" "tf" {
   binding {
-    role = "roles/owner"
+    role    = "roles/owner"
 
     members = [
       "user:${google_service_account.tf.email}",
     ]
   }
+}
+
+resource "google_service_account_iam_policy" "tf" {
+  service_account_id = google_service_account.tf.id
+  policy_data        = data.google_iam_policy.tf.policy_data
 }
