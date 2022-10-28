@@ -2,6 +2,7 @@ locals {
   project = "n3-dokimi"
 }
 
+# This will require the "cloudresourcemanager.googleapis.com" API to be activated for the master project
 data "google_organization" "org" {
   domain = var.organization
 }
@@ -34,9 +35,18 @@ data "google_iam_policy" "tf" {
       "user:${google_service_account.tf.email}",
     ]
   }
+
+  depends_on = [
+    google_project.dokimi
+  ]
 }
 
 resource "google_service_account_iam_policy" "tf" {
   service_account_id = google_service_account.tf.id
   policy_data        = data.google_iam_policy.tf.policy_data
+
+  depends_on         = [
+    data.google_iam_policy.tf
+    google_service_account.tf
+  ]
 }
