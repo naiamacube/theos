@@ -2,14 +2,19 @@ locals {
   project = "n3-dokimi"
 }
 
-data "google_folder" "main" {
-  folder = var.subspace
+data "google_organization" "org" {
+  domain = var.organization
+}
+
+data "google_active_folder" "main" {
+  display_name = var.subspace
+  parent       = "organizations/${google_organization.org.org_id}"
 }
 
 resource "google_project" "dokimi" {
   name       = local.project
   project_id = local.project
-  folder_id  = data.google_folder.main.id
+  folder_id  = data.google_active_folder.main.name
 }
 
 resource "google_service_account" "tf" {
