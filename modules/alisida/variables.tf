@@ -3,6 +3,20 @@ variable "organization" {
   type        = string
 }
 
+variable "tfe_hostname" {
+  description = "Terraform Cloud Hostname"
+  type        = string
+  sensitive   = true
+}
+
+# Generate a token w/ necessary permissions in Terraform Cloud
+
+variable "tfe_token" {
+  description = "Terraform Cloud Token"
+  type        = string
+  sensitive   = true
+}
+
 # To generate a new key-pair, install GnuPG (https://www.gnupg.org/download/) then refer to the GitHub guide (https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key)
 
 variable "pgp_key" {

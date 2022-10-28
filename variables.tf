@@ -19,6 +19,18 @@ variable "pgp_key" {
   sensitive   = true
 }
 
+variable "tfe_hostname" {
+  description = "Terraform Cloud Hostname"
+  type        = string
+  sensitive   = true
+}
+
+variable "tfe_token" {
+  description = "Terraform Cloud Token"
+  type        = string
+  sensitive   = true
+}
+
 variable "aws_access_key_id" {
   description = "AWS IAM User Access Key ID"
   type        = string

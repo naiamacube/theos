@@ -51,6 +51,9 @@ module "alisida" {
   organization    = var.organization
   pgp_key         = var.pgp_key
 
+  tfe_hostname    = var.tfe_hostname
+  tfe_token       = var.tfe_token
+
   aws_access_key  = var.aws_access_key_id
   aws_secret_key  = var.aws_secret_access_key
 }
