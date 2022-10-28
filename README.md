@@ -6,4 +6,4 @@ Manages `xyz.tfstate` for all projects developed under the Naiama domain. Each `
 
 Currently managed projects:
 * Domiki, a simple GCP project with AWS backend
-* 
+* Peristrofi, an implementation using a rotational KMS

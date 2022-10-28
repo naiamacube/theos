@@ -1,7 +1,7 @@
 terraform {
   cloud {
-    organization = "naiama"
-    hostname = "app.terraform.io"
+    organization = var.organization
+    hostname     = "app.terraform.io"
 
     workspaces {
       name = "theos"
@@ -9,11 +9,11 @@ terraform {
   }
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = "4.37.0"
     }
     google = {
-      source = "hashicorp/google"
+      source  = "hashicorp/google"
       version = "4.41.0"
     }
   }
@@ -24,18 +24,18 @@ terraform {
 provider "aws" {
   access_key = var.aws_access_key_id
   secret_key = var.aws_secret_access_key
-  region = var.aws_region
+  region     = var.aws_region
 }
 
 provider "google" {
   credentials = var.gcp_credentials
-  region = var.gcp_region
+  region      = var.gcp_region
 }
 
 module "dokimi" {
-  source = "./modules/dokimi"
+  source          = "./modules/dokimi"
 
-  organization    = var.organization
+  domain          = var.domain
   subspace        = var.subspace
   pgp_key         = var.pgp_key
 

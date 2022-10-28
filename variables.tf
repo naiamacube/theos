@@ -3,6 +3,11 @@ variable "organization" {
   type        = string
 }
 
+variable "domain" {
+  description = "Organization domain"
+  type        = string
+}
+
 variable "subspace" {
   description = "Organization Subspace"
   type        = string

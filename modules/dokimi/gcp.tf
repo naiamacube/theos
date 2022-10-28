@@ -4,7 +4,7 @@ locals {
 
 # This block will require the "cloudresourcemanager.googleapis.com" API to be activated for the master project
 data "google_organization" "org" {
-  domain = var.organization
+  domain = var.domain
 }
 
 data "google_active_folder" "main" {
