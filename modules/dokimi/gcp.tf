@@ -2,7 +2,7 @@ locals {
   project = "n3-dokimi"
 }
 
-# This will require the "cloudresourcemanager.googleapis.com" API to be activated for the master project
+# This block will require the "cloudresourcemanager.googleapis.com" API to be activated for the master project
 data "google_organization" "org" {
   domain = var.organization
 }
@@ -18,6 +18,7 @@ resource "google_project" "dokimi" {
   folder_id  = data.google_active_folder.main.name
 }
 
+# This block will require "iam.googleapis.com" API to be activated for the master project
 resource "google_service_account" "tf" {
   account_id = "dokimi-tf"
   project    = google_project.dokimi.number
@@ -32,7 +33,7 @@ data "google_iam_policy" "tf" {
     role    = "roles/owner"
 
     members = [
-      "user:${google_service_account.tf.email}",
+      "serviceAccount:${google_service_account.tf.email}",
     ]
   }
 
