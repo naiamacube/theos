@@ -2,15 +2,9 @@ locals {
   project = "n3-dokimi"
 }
 
-# This block requires the "cloudresourcemanager.googleapis.com" API to be activated for the master project
-data "google_organization" "org" {
-  domain = var.organization
-}
-
 resource "google_project" "dokimi" {
   name       = local.project
   project_id = local.project
-  org_id     = data.google_organization.org.org_id
   folder_id  = var.subspace
 }
 
