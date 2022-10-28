@@ -46,7 +46,7 @@ resource "google_service_account_iam_policy" "tf" {
   policy_data        = data.google_iam_policy.tf.policy_data
 
   depends_on         = [
-    data.google_iam_policy.tf
+    data.google_iam_policy.tf,
     google_service_account.tf
   ]
 }
