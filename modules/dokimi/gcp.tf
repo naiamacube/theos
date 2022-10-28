@@ -20,7 +20,7 @@ resource "google_project" "dokimi" {
 
 resource "google_service_account" "tf" {
   account_id = "dokimi-tf"
-  project    = google_project.dokimi.id
+  project    = google_project.dokimi.number
 }
 
 resource "google_service_account_key" "tf" {
