@@ -32,3 +32,28 @@ output "dokimi-gcp-tf-privatekey" {
   value = module.dokimi.gcp-tf-privatekey
   sensitive = true
 }
+
+output "alisida-aws-iam-user-arn" {
+  value = module.alisida.aws_iam_user.main.arn
+  sensitive = true
+}
+
+output "alisida-aws-iam-user-name" {
+  value = module.alisida.aws_iam_user.main.name
+  sensitive = true
+}
+
+output "alisida-aws-iam-user-unique-id" {
+  value = module.alisida.aws_iam_user.main.unique_id
+  sensitive = true
+}   
+
+output "alisida-aws-iam-access-key-id" {
+  value = module.alisida.aws_iam_access_key.main.id
+  sensitive = true
+}
+
+output "alisida-aws-iam-access-key-encrypted-secret" {
+  value = module.alisida.aws_iam_access_key.main.encrypted_secret
+  sensitive = true
+}
