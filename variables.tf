@@ -1,3 +1,13 @@
+variable "organization" {
+  description = "Organization"
+  type        = string
+}
+
+variable "subspace" {
+  description = "Organization Subspace"
+  type        = string
+}
+
 variable "pgp_key" {
   description = "PGP Public Key"
   type        = string
@@ -15,7 +25,6 @@ variable "aws_secret_access_key" {
   type        = string
   sensitive   = true
 }
-
 variable "aws_region" {
   description = "AWS Region"
   type        = string
@@ -30,30 +39,6 @@ variable "gcp_credentials" {
 
 variable "gcp_region" {
   description = "GCP Region"
-  type        = string
-  sensitive   = true
-}
-
-variable "dokimi_aws_region" {
-  description = "Dokimi AWS Region"
-  type        = string
-  sensitive   = true
-}
-
-variable "dokimi_aws_backend" {
-  description = "Dokimi AWS Backend name"
-  type        = string
-  sensitive   = true
-}
-
-variable "dokimi_aws_iam" {
-  description = "Dokimi AWS IAM name"
-  type        = string
-  sensitive   = true
-}
-
-variable "dokimi_gcp_region" {
-  description = "Dokimi GCP Region"
   type        = string
   sensitive   = true
 }
