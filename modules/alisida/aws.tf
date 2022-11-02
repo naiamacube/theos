@@ -47,7 +47,7 @@ resource "aws_iam_policy" "main" {
           "s3:GetObject",
           "s3:DeleteObject"
         ]
-        Resource = "${aws_s3_bucket.main.arn}/dokimi.tfstate"
+        Resource = "${aws_s3_bucket.main.arn}/alisida.tfstate"
       },
     ]
   })
