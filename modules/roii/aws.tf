@@ -17,11 +17,31 @@ resource "aws_s3_bucket_public_access_block" "main" {
   restrict_public_buckets = true
 }
 
+resource "aws_s3_bucket_versioning" "backend-storage" {
+  bucket = aws_s3_bucket.backend-storage.bucket
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
 resource "aws_s3_bucket_server_side_encryption_configuration" "main" {
   bucket = aws_s3_bucket.main.bucket
 
   rule {
     bucket_key_enabled = true
+  }
+}
+
+resource "aws_dynamodb_table" "backend-locking" {
+  name = local.aws_backend_name
+  hash_key = "LockID"
+  read_capacity = 1
+  write_capacity = 1
+
+  attribute {
+    name = "LockID"
+    type = "S"
   }
 }
 
