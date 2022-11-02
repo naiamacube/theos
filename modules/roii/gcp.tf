@@ -19,16 +19,16 @@ resource "google_project" "roii" {
 }
 
 # This block will require "iam.googleapis.com" API to be activated for the master project
-resource "google_service_account" "tf" {
+resource "google_service_account" "main" {
   account_id = "roii-tf"
   project    = google_project.roii.number
 }
 
-resource "google_service_account_key" "tf" {
+resource "google_service_account_key" "main" {
   service_account_id = google_service_account.tf.id
 }
 
-data "google_iam_policy" "tf" {
+data "google_iam_policy" "main" {
   binding {
     role    = "roles/owner"
 
@@ -42,7 +42,7 @@ data "google_iam_policy" "tf" {
   ]
 }
 
-resource "google_service_account_iam_policy" "tf" {
+resource "google_service_account_iam_policy" "main" {
   service_account_id = google_service_account.tf.id
   policy_data        = data.google_iam_policy.tf.policy_data
 

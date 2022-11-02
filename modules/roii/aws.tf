@@ -1,6 +1,7 @@
 locals {
-  aws_s3_bucket = "n3-roii"
-  aws_iam_name  = "n3-roii-tf"
+  aws_backend_name = "n3-roii-tfstate"
+  aws_s3_bucket    = "n3-roii"
+  aws_iam_name     = "n3-roii-tf"
 }
 
 resource "aws_s3_bucket" "main" {
@@ -18,7 +19,7 @@ resource "aws_s3_bucket_public_access_block" "main" {
 }
 
 resource "aws_s3_bucket_versioning" "backend-storage" {
-  bucket = aws_s3_bucket.backend-storage.bucket
+  bucket = aws_s3_bucket.main.bucket
 
   versioning_configuration {
     status = "Enabled"
