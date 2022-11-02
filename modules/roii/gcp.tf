@@ -20,7 +20,7 @@ resource "google_project" "roii" {
 
 # This block will require "iam.googleapis.com" API to be activated for the master project
 resource "google_service_account" "tf" {
-  account_id = "dokimi-tf"
+  account_id = "roii-tf"
   project    = google_project.roii.number
 }
 

@@ -57,3 +57,16 @@ module "alisida" {
   aws_access_key  = var.aws_access_key_id
   aws_secret_key  = var.aws_secret_access_key
 }
+
+module "roii" {
+  source          = "./modules/roii"
+
+  domain          = var.domain
+  subspace        = var.subspace
+  pgp_key         = var.pgp_key
+
+  aws_access_key  = var.aws_access_key_id
+  aws_secret_key  = var.aws_secret_access_key
+
+  gcp_credentials = var.gcp_credentials
+}
