@@ -18,19 +18,19 @@ variable "pgp_key" {
 
 # Requires the creation of an AWS root account, and an IAM user w/ full access to the platform
 
-variable "access_key" {
+variable "aws_access_key" {
   description = "AWS IAM User Access Key ID"
   type        = string
   sensitive   = true
 }
 
-variable "secret_key" {
+variable "aws_secret_key" {
   description = "AWS IAM User Secret Access Key"
   type        = string
   sensitive   = true
 }
 
-variable "credentials" {
+variable "gcp_credentials" {
   description = "GCP SA credentials"
   type        = string
   sensitive   = true
