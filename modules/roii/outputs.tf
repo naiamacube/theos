@@ -21,26 +21,26 @@ output "aws-iam-user-unique-id" {
 }
 
 output "aws-iam-tf-key" {
-  value = aws_iam_access_key.tf.id
+  value = aws_iam_access_key.main.id
   sensitive = true
 }
 
 output "aws-iam-tf-secret" {
-  value = aws_iam_access_key.tf.encrypted_secret
+  value = aws_iam_access_key.main.encrypted_secret
   sensitive = true
 }
 
 output "gcp-tf-email" {
-  value = google_service_account.tf.email
+  value = google_service_account.main.email
   sensitive = true
 }
 
 output "gcp-tf-publickey" {
-  value = google_service_account_key.tf.public_key
+  value = google_service_account_key.main.public_key
   sensitive = true
 }
 
 output "gcp-tf-privatekey" {
-  value = google_service_account_key.tf.private_key
+  value = google_service_account_key.main.private_key
   sensitive = true
 }
