@@ -57,3 +57,38 @@ output "alisida-aws-iam-access-key-encrypted-secret" {
   value = module.alisida.aws-iam-access-key-encrypted-secret
   sensitive = true
 }
+
+output "roii-backend-storage-arn" {
+  value = module.roii.aws-storage-arn
+  sensitive = true
+}
+
+output "roii-backend-locking-arn" {
+  value = module.roii.aws-locking-arn
+  sensitive = true
+}
+
+output "roii-aws-iam-user-arn" {
+  value = module.roii.aws-iam-user-arn
+  sensitive = true
+}
+
+output "roii-aws-iam-user-name" {
+  value = module.roii.aws-iam-user-name
+  sensitive = true
+}
+
+output "roii-aws-iam-user-unique-id" {
+  value = module.roii.aws-iam-user-unique-id
+  sensitive = true
+}   
+
+output "roii-aws-iam-access-key-id" {
+  value = module.alisida.aws-iam-access-key-id
+  sensitive = true
+}
+
+output "roii-aws-iam-access-key-encrypted-secret" {
+  value = module.alisida.aws-iam-access-key-encrypted-secret
+  sensitive = true
+}
