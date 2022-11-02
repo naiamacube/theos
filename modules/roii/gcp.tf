@@ -12,10 +12,17 @@ data "google_active_folder" "main" {
   parent       = "organizations/${data.google_organization.org.org_id}"
 }
 
+data "google_billing_account" "main" {
+  display_name = "naiama"
+  open         = true
+}
+
 resource "google_project" "roii" {
-  name       = local.project
-  project_id = local.project
-  folder_id  = data.google_active_folder.main.name
+  name            = local.project
+  project_id      = local.project
+  folder_id       = data.google_active_folder.main.name
+
+  billing_account = data.google_billing_account.main.id
 }
 
 # This block will require "iam.googleapis.com" API to be activated for the master project
