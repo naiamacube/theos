@@ -34,7 +34,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "main" {
   }
 }
 
-resource "aws_dynamodb_table" "backend-locking" {
+resource "aws_dynamodb_table" "main" {
   name = local.aws_backend_name
   hash_key = "LockID"
   read_capacity = 1
