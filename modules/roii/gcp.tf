@@ -25,7 +25,7 @@ resource "google_service_account" "main" {
 }
 
 resource "google_service_account_key" "main" {
-  service_account_id = google_service_account.tf.id
+  service_account_id = google_service_account.main.id
 }
 
 data "google_iam_policy" "main" {
@@ -33,7 +33,7 @@ data "google_iam_policy" "main" {
     role    = "roles/owner"
 
     members = [
-      "serviceAccount:${google_service_account.tf.email}",
+      "serviceAccount:${google_service_account.main.email}",
     ]
   }
 
@@ -43,12 +43,12 @@ data "google_iam_policy" "main" {
 }
 
 resource "google_service_account_iam_policy" "main" {
-  service_account_id = google_service_account.tf.id
-  policy_data        = data.google_iam_policy.tf.policy_data
+  service_account_id = google_service_account.main.id
+  policy_data        = data.google_iam_policy.main.policy_data
 
   depends_on         = [
-    data.google_iam_policy.tf,
-    google_service_account.tf
+    data.google_iam_policy.main,
+    google_service_account.main
   ]
 }
 

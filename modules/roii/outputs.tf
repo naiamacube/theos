@@ -1,10 +1,10 @@
 output "aws-storage-arn" {
-  value = aws_s3_bucket.backend-storage.arn
+  value = aws_s3_bucket.main.arn
   sensitive = true
 }
 
 output "aws-locking-arn" {
-  value = aws_dynamodb_table.backend-locking.arn
+  value = aws_dynamodb_table.main.arn
   sensitive = true
 }
 
