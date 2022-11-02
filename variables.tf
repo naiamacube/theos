@@ -54,6 +54,12 @@ variable "gcp_credentials" {
   sensitive   = true
 }
 
+variable "gcp_billing_id" {
+  description = "GCP Billing ID"
+  type        = string
+  sensitive   = true
+}
+
 variable "gcp_region" {
   description = "GCP Region"
   type        = string

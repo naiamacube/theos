@@ -69,4 +69,5 @@ module "roii" {
   aws_secret_key  = var.aws_secret_access_key
 
   gcp_credentials = var.gcp_credentials
+  gcp_billing_id  = var.gcp_billing_id
 }

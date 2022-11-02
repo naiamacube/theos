@@ -12,9 +12,10 @@ data "google_active_folder" "main" {
   parent       = "organizations/${data.google_organization.org.org_id}"
 }
 
+# This block will require the "cloudbilling.googleapis.com" API to be activated for the master project
 data "google_billing_account" "main" {
-  display_name = "naiama"
-  open         = true
+  billing_account = var.gcp_billing_id
+  open            = true
 }
 
 resource "google_project" "roii" {
