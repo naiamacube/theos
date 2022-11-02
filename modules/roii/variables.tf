@@ -3,6 +3,16 @@ variable "organization" {
   type        = string
 }
 
+variable "domain" {
+  description = "Organization domain"
+  type        = string
+}
+
+variable "subspace" {
+  description = "Organization subspace"
+  type        = string
+}
+
 variable "tfe_hostname" {
   description = "Terraform Cloud Hostname"
   type        = string
