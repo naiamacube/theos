@@ -70,4 +70,7 @@ module "roii" {
 
   gcp_credentials = var.gcp_credentials
   gcp_billing_id  = var.gcp_billing_id
+
+  circleci_user_id = var.circleci_user_id
+  circleci_token   = var.circleci_token
 }

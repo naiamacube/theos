@@ -41,3 +41,15 @@ variable "gcp_billing_id" {
   type        = string
   sensitive   = true
 }
+
+variable "circleci_user_id" {
+  description = "CircleCI User ID"
+  type        = string
+  sensitive   = true
+}
+
+variable "circleci_token" {
+  description = "CircleCI Token"
+  type        = string
+  sensitive   = true
+}

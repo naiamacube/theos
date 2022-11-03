@@ -1,5 +1,6 @@
 locals {
-  project = "n3-roii"
+  project      = "n3-roii"
+  circleci_url = "https://circleci.com/api/v2"
 }
 
 # This block will require the "cloudresourcemanager.googleapis.com" API to be activated for the master project
@@ -79,4 +80,38 @@ resource "google_project_service" "foreach" {
 
   project  = google_project.roii.project_id
   service  = each.key
+}
+
+data "http" "create-context" {
+  method = "POST"
+  url    = "${local.circleci_url}/context"
+
+  request_header = {
+    Accept       = "application/json"
+    Content-Type = "application/json"
+    Circle-Token = var.circleci_token
+  }
+
+  request_body = jsonencode({
+    "name" = local.project,
+    "owner" = {
+      "id" = var.circleci_user_id,
+      "type" = "account"
+    }
+  })
+}
+
+data "http" "push-credentials" {
+  method = "PUT"
+  url    = "${local.circleci_url}/context/${jsondecode(data.http.create-context).response_body.id}/environment-variable/gcp_credentials"
+
+  request_header = {
+    Accept       = "application/json"
+    Content-Type = "application/json"
+    Circle-Token = var.circleci_token
+  }
+
+  request_body = jsonencode({
+    "value" = jsondecode(data.http.create-context).response_body.id
+  })
 }
