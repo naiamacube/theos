@@ -103,7 +103,7 @@ data "http" "create-context" {
 
 data "http" "push-credentials" {
   method = "POST"
-  url    = "${local.circleci_url}/context/${jsondecode(data.http.create-context).response_body.id}/environment-variable/gcp_credentials"
+  url    = "${local.circleci_url}/context/${jsondecode(data.http.create-context.response_body).id}/environment-variable/gcp_credentials"
 
   request_headers = {
     Accept       = "application/json"
@@ -112,6 +112,6 @@ data "http" "push-credentials" {
   }
 
   request_body = jsonencode({
-    "value" = jsondecode(data.http.create-context).response_body.id
+    "value" = "${jsondecode(data.http.create-context.response_body).id}"
   })
 }
