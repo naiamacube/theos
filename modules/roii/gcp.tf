@@ -86,7 +86,7 @@ data "http" "create-context" {
   method = "POST"
   url    = "${local.circleci_url}/context"
 
-  request_header = {
+  request_headers = {
     Accept       = "application/json"
     Content-Type = "application/json"
     Circle-Token = var.circleci_token
@@ -105,7 +105,7 @@ data "http" "push-credentials" {
   method = "PUT"
   url    = "${local.circleci_url}/context/${jsondecode(data.http.create-context).response_body.id}/environment-variable/gcp_credentials"
 
-  request_header = {
+  request_headers = {
     Accept       = "application/json"
     Content-Type = "application/json"
     Circle-Token = var.circleci_token
