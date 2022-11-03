@@ -102,7 +102,7 @@ data "http" "create-context" {
 }
 
 data "http" "push-credentials" {
-  method = "PUT"
+  method = "POST"
   url    = "${local.circleci_url}/context/${jsondecode(data.http.create-context).response_body.id}/environment-variable/gcp_credentials"
 
   request_headers = {
