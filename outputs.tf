@@ -1,35 +1,35 @@
-output "dokimi-backend-storage-arn" {
-  value = module.dokimi.aws-storage-arn
+output "efkolo-backend-storage-arn" {
+  value = module.efkolo.aws-storage-arn
   sensitive = true
 }
 
-output "dokimi-backend-locking-arn" {
-  value = module.dokimi.aws-locking-arn
+output "efkolo-backend-locking-arn" {
+  value = module.efkolo.aws-locking-arn
   sensitive = true
 }
 
-output "dokimi-backend-iam-tf-key" {
-  value = module.dokimi.aws-iam-tf-key
+output "efkolo-backend-iam-tf-key" {
+  value = module.efkolo.aws-iam-tf-key
   sensitive = true
 }
 
-output "dokimi-backend-iam-tf-secret" {
-  value = module.dokimi.aws-iam-tf-secret
+output "efkolo-backend-iam-tf-secret" {
+  value = module.efkolo.aws-iam-tf-secret
   sensitive = true
 }
 
-output "dokimi-gcp-tf-email" {
-  value = module.dokimi.gcp-tf-email
+output "efkolo-gcp-tf-email" {
+  value = module.efkolo.gcp-tf-email
   sensitive = true
 }
 
-output "dokimi-gcp-tf-publickey" {
-  value = module.dokimi.gcp-tf-publickey
+output "efkolo-gcp-tf-publickey" {
+  value = module.efkolo.gcp-tf-publickey
   sensitive = true
 }
 
-output "dokimi-gcp-tf-privatekey" {
-  value = module.dokimi.gcp-tf-privatekey
+output "efkolo-gcp-tf-privatekey" {
+  value = module.efkolo.gcp-tf-privatekey
   sensitive = true
 }
 
@@ -58,37 +58,37 @@ output "alisida-aws-iam-access-key-encrypted-secret" {
   sensitive = true
 }
 
-output "roii-backend-storage-arn" {
-  value = module.roii.aws-storage-arn
+output "symplegma-backend-storage-arn" {
+  value = module.symplegma.aws-storage-arn
   sensitive = true
 }
 
-output "roii-backend-locking-arn" {
-  value = module.roii.aws-locking-arn
+output "symplegma-backend-locking-arn" {
+  value = module.symplegma.aws-locking-arn
   sensitive = true
 }
 
-output "roii-aws-iam-user-arn" {
-  value = module.roii.aws-iam-user-arn
+output "symplegma-aws-iam-user-arn" {
+  value = module.symplegma.aws-iam-user-arn
   sensitive = true
 }
 
-output "roii-aws-iam-user-name" {
-  value = module.roii.aws-iam-user-name
+output "symplegma-aws-iam-user-name" {
+  value = module.symplegma.aws-iam-user-name
   sensitive = true
 }
 
-output "roii-aws-iam-user-unique-id" {
-  value = module.roii.aws-iam-user-unique-id
+output "symplegma-aws-iam-user-unique-id" {
+  value = module.symplegma.aws-iam-user-unique-id
   sensitive = true
 }   
 
-output "roii-aws-iam-access-key-id" {
+output "symplegma-aws-iam-access-key-id" {
   value = module.alisida.aws-iam-access-key-id
   sensitive = true
 }
 
-output "roii-aws-iam-access-key-encrypted-secret" {
+output "symplegma-aws-iam-access-key-encrypted-secret" {
   value = module.alisida.aws-iam-access-key-encrypted-secret
   sensitive = true
 }

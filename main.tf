@@ -32,8 +32,8 @@ provider "google" {
   region      = var.gcp_region
 }
 
-module "dokimi" {
-  source          = "./modules/dokimi"
+module "efkolo" {
+  source          = "./modules/efkolo"
 
   domain          = var.domain
   subspace        = var.subspace
@@ -58,8 +58,8 @@ module "alisida" {
   aws_secret_key  = var.aws_secret_access_key
 }
 
-module "roii" {
-  source          = "./modules/roii"
+module "symplegma" {
+  source          = "./modules/symplegma"
 
   domain          = var.domain
   subspace        = var.subspace

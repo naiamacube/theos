@@ -1,5 +1,5 @@
 locals {
-  project = "n3-dokimi"
+  project = "n3-efkolo"
 }
 
 # This block will require the "cloudresourcemanager.googleapis.com" API to be activated for the master project
@@ -12,7 +12,7 @@ data "google_active_folder" "main" {
   parent       = "organizations/${data.google_organization.org.org_id}"
 }
 
-resource "google_project" "dokimi" {
+resource "google_project" "efkolo" {
   name       = local.project
   project_id = local.project
   folder_id  = data.google_active_folder.main.name
@@ -20,8 +20,8 @@ resource "google_project" "dokimi" {
 
 # This block will require "iam.googleapis.com" API to be activated for the master project
 resource "google_service_account" "tf" {
-  account_id = "dokimi-tf"
-  project    = google_project.dokimi.number
+  account_id = "efkolo-tf"
+  project    = google_project.efkolo.number
 }
 
 resource "google_service_account_key" "tf" {
@@ -38,7 +38,7 @@ data "google_iam_policy" "tf" {
   }
 
   depends_on = [
-    google_project.dokimi
+    google_project.efkolo
   ]
 }
 
