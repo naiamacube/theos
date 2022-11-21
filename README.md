@@ -8,4 +8,4 @@ Currently managed projects:
 * Domiki, a simple GCP project with AWS backend
 * Alisida, experiment to push secrets to a Terraform Cloud workspace
 * Roii, a Kubeflow deployment to GCP
-[comment]: <> (* Peristrofi, an implementation using a rotational KMS)
+<> (* Peristrofi, an implementation using a rotational KMS)
