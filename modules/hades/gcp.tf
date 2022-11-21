@@ -1,5 +1,5 @@
 locals {
-  project      = "n3-symplegma"
+  project      = "n3-hades"
   circleci_url = "https://circleci.com/api/v2"
 }
 
@@ -19,7 +19,7 @@ data "google_billing_account" "main" {
   open            = true
 }
 
-resource "google_project" "symplegma" {
+resource "google_project" "hades" {
   name            = local.project
   project_id      = local.project
   folder_id       = data.google_active_folder.main.name
@@ -29,8 +29,8 @@ resource "google_project" "symplegma" {
 
 # This block will require "iam.googleapis.com" API to be activated for the master project
 resource "google_service_account" "main" {
-  account_id = "symplegma-tf"
-  project    = google_project.symplegma.number
+  account_id = "hades-tf"
+  project    = google_project.hades.number
 }
 
 resource "google_service_account_key" "main" {
@@ -47,7 +47,7 @@ data "google_iam_policy" "main" {
   }
 
   depends_on = [
-    google_project.symplegma
+    google_project.hades
   ]
 }
 
@@ -78,7 +78,7 @@ resource "google_project_service" "foreach" {
     "endpoints.googleapis.com"
   ])
 
-  project  = google_project.symplegma.project_id
+  project  = google_project.hades.project_id
   service  = each.key
 }
 

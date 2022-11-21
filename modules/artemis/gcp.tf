@@ -1,5 +1,5 @@
 locals {
-  project = "n3-efkolo"
+  project = "n3-artemis"
 }
 
 # This block will require the "cloudresourcemanager.googleapis.com" API to be activated for the master project
@@ -12,7 +12,7 @@ data "google_active_folder" "main" {
   parent       = "organizations/${data.google_organization.org.org_id}"
 }
 
-resource "google_project" "efkolo" {
+resource "google_project" "artemis" {
   name       = local.project
   project_id = local.project
   folder_id  = data.google_active_folder.main.name
@@ -20,8 +20,8 @@ resource "google_project" "efkolo" {
 
 # This block will require "iam.googleapis.com" API to be activated for the master project
 resource "google_service_account" "tf" {
-  account_id = "efkolo-tf"
-  project    = google_project.efkolo.number
+  account_id = "artemis-tf"
+  project    = google_project.artemis.number
 }
 
 resource "google_service_account_key" "tf" {
@@ -38,7 +38,7 @@ data "google_iam_policy" "tf" {
   }
 
   depends_on = [
-    google_project.efkolo
+    google_project.artemis
   ]
 }
 

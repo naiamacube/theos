@@ -58,8 +58,8 @@ module "alisida" {
   aws_secret_key  = var.aws_secret_access_key
 }
 
-module "symplegma" {
-  source          = "./modules/symplegma"
+module "hades" {
+  source          = "./modules/hades"
 
   domain          = var.domain
   subspace        = var.subspace

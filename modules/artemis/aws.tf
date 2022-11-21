@@ -1,6 +1,6 @@
 locals {
-  aws_backend_name = "n3-efkolo-tfstate"
-  aws_iam_name     = "n3-efkolo-tf"
+  aws_backend_name = "n3-artemis-tfstate"
+  aws_iam_name     = "n3-artemis-tf"
 }
 
 resource "aws_s3_bucket" "backend-storage" {
@@ -68,7 +68,7 @@ resource "aws_iam_policy" "tf" {
           "s3:PutObject",
           "s3:DeleteObject"
         ]
-        Resource = "${aws_s3_bucket.backend-storage.arn}/efkolo.tfstate"
+        Resource = "${aws_s3_bucket.backend-storage.arn}/artemis.tfstate"
       },
       {
         Effect   = "Allow"
