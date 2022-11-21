@@ -1,6 +1,6 @@
 locals {
-  aws_s3_bucket = "n3-alisida"
-  aws_iam_name  = "n3-alisida-tf"
+  aws_s3_bucket = "n3-thalassa"
+  aws_iam_name  = "n3-thalassa-tf"
 }
 
 resource "aws_s3_bucket" "main" {
@@ -47,7 +47,7 @@ resource "aws_iam_policy" "main" {
           "s3:GetObject",
           "s3:DeleteObject"
         ]
-        Resource = "${aws_s3_bucket.main.arn}/alisida.tfstate"
+        Resource = "${aws_s3_bucket.main.arn}/thalassa.tfstate"
       },
     ]
   })

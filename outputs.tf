@@ -1,94 +1,94 @@
-output "artemis-backend-storage-arn" {
-  value = module.artemis.aws-storage-arn
+output "phanes-backend-storage-arn" {
+  value = module.phanes.aws-storage-arn
   sensitive = true
 }
 
-output "artemis-backend-locking-arn" {
-  value = module.artemis.aws-locking-arn
+output "phanes-backend-locking-arn" {
+  value = module.phanes.aws-locking-arn
   sensitive = true
 }
 
-output "artemis-backend-iam-tf-key" {
-  value = module.artemis.aws-iam-tf-key
+output "phanes-backend-iam-tf-key" {
+  value = module.phanes.aws-iam-tf-key
   sensitive = true
 }
 
-output "artemis-backend-iam-tf-secret" {
-  value = module.artemis.aws-iam-tf-secret
+output "phanes-backend-iam-tf-secret" {
+  value = module.phanes.aws-iam-tf-secret
   sensitive = true
 }
 
-output "artemis-gcp-tf-email" {
-  value = module.artemis.gcp-tf-email
+output "phanes-gcp-tf-email" {
+  value = module.phanes.gcp-tf-email
   sensitive = true
 }
 
-output "artemis-gcp-tf-publickey" {
-  value = module.artemis.gcp-tf-publickey
+output "phanes-gcp-tf-publickey" {
+  value = module.phanes.gcp-tf-publickey
   sensitive = true
 }
 
-output "artemis-gcp-tf-privatekey" {
-  value = module.artemis.gcp-tf-privatekey
+output "phanes-gcp-tf-privatekey" {
+  value = module.phanes.gcp-tf-privatekey
   sensitive = true
 }
 
-output "alisida-aws-iam-user-arn" {
-  value = module.alisida.aws-iam-user-arn
+output "thalassa-aws-iam-user-arn" {
+  value = module.thalassa.aws-iam-user-arn
   sensitive = true
 }
 
-output "alisida-aws-iam-user-name" {
-  value = module.alisida.aws-iam-user-name
+output "thalassa-aws-iam-user-name" {
+  value = module.thalassa.aws-iam-user-name
   sensitive = true
 }
 
-output "alisida-aws-iam-user-unique-id" {
-  value = module.alisida.aws-iam-user-unique-id
+output "thalassa-aws-iam-user-unique-id" {
+  value = module.thalassa.aws-iam-user-unique-id
   sensitive = true
 }   
 
-output "alisida-aws-iam-access-key-id" {
-  value = module.alisida.aws-iam-access-key-id
+output "thalassa-aws-iam-access-key-id" {
+  value = module.thalassa.aws-iam-access-key-id
   sensitive = true
 }
 
-output "alisida-aws-iam-access-key-encrypted-secret" {
-  value = module.alisida.aws-iam-access-key-encrypted-secret
+output "thalassa-aws-iam-access-key-encrypted-secret" {
+  value = module.thalassa.aws-iam-access-key-encrypted-secret
   sensitive = true
 }
 
-output "hades-backend-storage-arn" {
-  value = module.hades.aws-storage-arn
+output "zeus-backend-storage-arn" {
+  value = module.zeus.aws-storage-arn
   sensitive = true
 }
 
-output "hades-backend-locking-arn" {
-  value = module.hades.aws-locking-arn
+output "zeus-backend-locking-arn" {
+  value = module.zeus.aws-locking-arn
   sensitive = true
 }
 
-output "hades-aws-iam-user-arn" {
-  value = module.hades.aws-iam-user-arn
+output "zeus-aws-iam-user-arn" {
+  value = module.zeus.aws-iam-user-arn
   sensitive = true
 }
 
-output "hades-aws-iam-user-name" {
-  value = module.hades.aws-iam-user-name
+output "zeus-aws-iam-user-name" {
+  value = module.zeus.aws-iam-user-name
   sensitive = true
 }
 
-output "hades-aws-iam-user-unique-id" {
-  value = module.hades.aws-iam-user-unique-id
+output "zeus-aws-iam-user-unique-id" {
+  value = module.zeus.aws-iam-user-unique-id
   sensitive = true
 }   
 
-output "hades-aws-iam-access-key-id" {
-  value = module.alisida.aws-iam-access-key-id
+output "zeus-aws-iam-access-key-id" {
+  value = module.thalassa.aws-iam-access-key-id
   sensitive = true
 }
 
-output "hades-aws-iam-access-key-encrypted-secret" {
-  value = module.alisida.aws-iam-access-key-encrypted-secret
+output "zeus-aws-iam-access-key-encrypted-secret" {
+  value = module.thalassa.aws-iam-access-key-encrypted-secret
   sensitive = true
 }

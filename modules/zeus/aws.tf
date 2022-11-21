@@ -1,7 +1,7 @@
 locals {
-  aws_backend_name = "n3-hades-tfstate"
-  aws_s3_bucket    = "n3-hades"
-  aws_iam_name     = "n3-hades-tf"
+  aws_backend_name = "n3-zeus-tfstate"
+  aws_s3_bucket    = "n3-zeus"
+  aws_iam_name     = "n3-zeus-tf"
 }
 
 resource "aws_s3_bucket" "main" {
@@ -68,7 +68,7 @@ resource "aws_iam_policy" "main" {
           "s3:GetObject",
           "s3:DeleteObject"
         ]
-        Resource = "${aws_s3_bucket.main.arn}/hades.tfstate"
+        Resource = "${aws_s3_bucket.main.arn}/zeus.tfstate"
       },
     ]
   })

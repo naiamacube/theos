@@ -32,8 +32,8 @@ provider "google" {
   region      = var.gcp_region
 }
 
-module "artemis" {
-  source          = "./modules/artemis"
+module "phanes" {
+  source          = "./modules/phanes"
 
   domain          = var.domain
   subspace        = var.subspace
@@ -45,8 +45,8 @@ module "artemis" {
   gcp_credentials = var.gcp_credentials
 }
 
-module "alisida" {
-  source          = "./modules/alisida"
+module "thalassa" {
+  source          = "./modules/thalassa"
 
   organization    = var.organization
   pgp_key         = var.pgp_key
@@ -58,8 +58,8 @@ module "alisida" {
   aws_secret_key  = var.aws_secret_access_key
 }
 
-module "hades" {
-  source          = "./modules/hades"
+module "zeus" {
+  source          = "./modules/zeus"
 
   domain          = var.domain
   subspace        = var.subspace

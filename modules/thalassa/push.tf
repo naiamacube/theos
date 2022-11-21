@@ -1,5 +1,5 @@
 resource "tfe_workspace" "main" {
-  name = "n3-alisida"
+  name = "n3-thalassa"
   organization = var.organization
 }
 
