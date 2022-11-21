@@ -66,6 +66,12 @@ variable "gcp_region" {
   sensitive   = true
 }
 
+variable "gcp_zone" {
+  description = "GCP Zone"
+  type        = string
+  sensitive   = true
+}
+
 variable "circleci_org_id" {
   description = "CircleCI Organization UUID"
   type        = string
