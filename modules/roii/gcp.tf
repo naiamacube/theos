@@ -101,9 +101,9 @@ data "http" "create-context" {
   })
 }
 
-data "http" "push-credentials" {
+data "http" "push-gcp-sa-name" {
   method = "POST"
-  url    = "${local.circleci_url}/context/${jsondecode(data.http.create-context.response_body).id}/environment-variable/gcp_credentials"
+  url    = "${local.circleci_url}/context/${jsondecode(data.http.create-context.response_body).id}/environment-variable/gcp_sa_name"
 
   request_headers = {
     Accept       = "application/json"
@@ -112,6 +112,21 @@ data "http" "push-credentials" {
   }
 
   request_body = jsonencode({
-    "value" = "${jsondecode(data.http.create-context.response_body).id}"
+    "value" = "${google_service_account_key.main.name}"
+  })
+}
+
+data "http" "push-gcp-sa-private-key" {
+  method = "POST"
+  url    = "${local.circleci_url}/context/${jsondecode(data.http.create-context.response_body).id}/environment-variable/gcp_sa_credentials"
+
+  request_headers = {
+    Accept       = "application/json"
+    Content-Type = "application/json"
+    Circle-Token = var.circleci_token
+  }
+
+  request_body = jsonencode({
+    "value" = "${google_service_account_key.main.private_key}"
   })
 }
