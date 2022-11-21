@@ -82,6 +82,8 @@ resource "google_project_service" "foreach" {
   service  = each.key
 }
 
+# It would have been sick to be able to dynamically create context and push credentials based on infra resource creation, but because of the poor CircleCI API for dealing w/ contexts, OR Terraform poor code control flow management, it's a dead dream for now... Going manual & Moving on.
+/*
 data "http" "create-context" {
   method = "POST"
   url    = "${local.circleci_url}/context"
@@ -130,3 +132,4 @@ data "http" "push-gcp-sa-private-key" {
     "value" = "${google_service_account_key.main.private_key}"
   })
 }
+*/
