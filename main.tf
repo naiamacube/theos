@@ -1,10 +1,10 @@
 terraform {
   cloud {
-    organization = var.organization
+    organization = "naiama"
     hostname     = "app.terraform.io"
 
     workspaces {
-      name = "theos"
+      name = "n3-theos"
     }
   }
   required_providers {
