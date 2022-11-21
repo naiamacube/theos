@@ -66,14 +66,14 @@ variable "gcp_region" {
   sensitive   = true
 }
 
-variable "circleci_user_id" {
-  description = "CircleCI User ID"
+variable "circleci_org_id" {
+  description = "CircleCI Organization UUID"
   type        = string
   sensitive   = true
 }
 
 variable "circleci_token" {
-  description = "CircleCI Token"
+  description = "CircleCI User Token"
   type        = string
   sensitive   = true
 }

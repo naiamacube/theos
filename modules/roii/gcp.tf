@@ -95,8 +95,8 @@ data "http" "create-context" {
   request_body = jsonencode({
     "name" = local.project,
     "owner" = {
-      "id" = var.circleci_user_id,
-      "type" = "account"
+      "id" = var.circleci_org_id,
+      "type" = "organization"
     }
   })
 }
