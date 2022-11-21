@@ -32,8 +32,8 @@ provider "google" {
   region      = var.gcp_region
 }
 
-module "efkolo" {
-  source          = "./modules/efkolo"
+module "artemis" {
+  source          = "./modules/artemis"
 
   domain          = var.domain
   subspace        = var.subspace
