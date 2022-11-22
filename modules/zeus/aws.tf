@@ -70,6 +70,16 @@ resource "aws_iam_policy" "main" {
         ]
         Resource = "${aws_s3_bucket.main.arn}/zeus.tfstate"
       },
+      {
+        Effect   = "Allow",
+        Action   = [
+          "dynamodb:DescribeTable",
+          "dynamodb:GetItem",
+          "dynamodb:PutItem",
+          "dynamodb:DeleteItem"
+        ]
+        Resource = "${aws_dynamodb_table.main.arn}"
+      },
     ]
   })
 }
