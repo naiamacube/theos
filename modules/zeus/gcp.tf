@@ -37,26 +37,16 @@ resource "google_service_account_key" "main" {
   service_account_id = google_service_account.main.id
 }
 
-data "google_iam_policy" "main" {
-  binding {
-    role    = "roles/owner"
+data "google_project_iam_binding" "main" {
+  project = google_project.zeus.number
+  role    = "roles/owner"
 
-    members = [
-      "serviceAccount:${google_service_account.main.email}",
-    ]
-  }
+  members = [
+    "serviceAccount:${google_service_account.main.email}",
+  ]
 
   depends_on = [
-    google_project.zeus
-  ]
-}
-
-resource "google_service_account_iam_policy" "main" {
-  service_account_id = google_service_account.main.name
-  policy_data        = data.google_iam_policy.main.policy_data
-
-  depends_on         = [
-    data.google_iam_policy.main,
+    google_project.zeus,
     google_service_account.main
   ]
 }
