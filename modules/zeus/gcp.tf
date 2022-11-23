@@ -37,7 +37,7 @@ resource "google_service_account_key" "main" {
   service_account_id = google_service_account.main.id
 }
 
-data "google_project_iam_binding" "main" {
+resource "google_project_iam_binding" "main" {
   project = google_project.zeus.number
   role    = "roles/owner"
 
