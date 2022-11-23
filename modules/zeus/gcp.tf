@@ -52,7 +52,7 @@ data "google_iam_policy" "main" {
 }
 
 resource "google_service_account_iam_policy" "main" {
-  service_account_id = google_service_account.main.id
+  service_account_id = google_service_account.main.name
   policy_data        = data.google_iam_policy.main.policy_data
 
   depends_on         = [
