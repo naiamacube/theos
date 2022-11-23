@@ -1,6 +1,6 @@
 locals {
   aws_backend_name = "n3-zeus-tfstate"
-  aws_s3_bucket    = "n3-zeus"
+  aws_s3_bucket    = "n3-zeus-tfstate"
   aws_iam_name     = "n3-zeus-tf"
 }
 
