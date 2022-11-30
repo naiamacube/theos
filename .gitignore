@@ -3,7 +3,6 @@
 *.tfstate
 *.tfstate.*
 **/secret.tfvars
-backend.tf
 config.*.tfbackend
 crash.log
 override.tf
@@ -13,3 +12,6 @@ override.tf.json
 
 # vim stuff
 **/*.swp
+
+# exclude secrets
+shadow

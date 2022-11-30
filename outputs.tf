@@ -92,3 +92,43 @@ output "zeus-aws-iam-access-key-encrypted-secret" {
   value = module.thalassa.aws-iam-access-key-encrypted-secret
   sensitive = true
 }
+
+output "ladon-azuread-service-principal-application-id" {
+  value = module.ladon.azuread-service-principal-application-id
+  sensitive = true
+}
+
+output "ladon-azuread-service-principal-object-id" {
+  value = module.ladon.azuread-service-principal-object-id
+  sensitive = true
+}
+
+output "ladon-azurerm-storage-account-id" {
+  value = module.ladon.azurerm-storage-account-id
+  sensitive = true
+}
+
+output "ladon-azurerm-storage-account-primary-location" {
+  value = module.ladon.azurerm-storage-account-primary-location
+  sensitive = true
+}
+
+output "ladon-azurerm-storage-account-primary-blob-endpoint" {
+  value = module.ladon.azurerm-storage-account-primary-blob-endpoint
+  sensitive = true
+}
+
+output "ladon-azurerm-storage-account-primary-table-endpoint" {
+  value = module.ladon.azurerm-storage-account-primary-table-endpoint
+  sensitive = true
+}
+
+output "ladon-azurerm-storage-container-id" {
+  value = module.ladon.azurerm-storage-container-id
+  sensitive = true
+}
+
+output "ladon-azurerm-storage-container-resource-manager-id" {
+  value = module.ladon.azurerm-storage-container-resource-manager-id
+  sensitive = true
+}

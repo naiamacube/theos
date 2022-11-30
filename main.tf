@@ -8,9 +8,21 @@ terraform {
     }
   }
   required_providers {
+    local = {
+      source = "hashicorp/local"
+      version = "2.2.3"
+    }
     aws = {
       source  = "hashicorp/aws"
       version = "4.37.0"
+    }
+    azuread = {
+      source  = "hashicorp/azuread"
+      version = "2.30.0"
+    }
+    azurerm = {
+      source = "hashicorp/azurerm"
+      version = "3.33.0"
     }
     google = {
       source  = "hashicorp/google"
@@ -25,6 +37,19 @@ provider "aws" {
   access_key = var.aws_access_key_id
   secret_key = var.aws_secret_access_key
   region     = var.aws_region
+}
+
+provider "azuread" {
+  client_id     = var.azure_client_id
+  client_secret = var.azure_client_secret
+  tenant_id     = var.azure_tenant_id
+}
+
+provider "azurerm" {
+  client_id       = var.azure_client_id
+  client_secret   = var.azure_client_secret
+  subscription_id = var.azure_subscription_id
+  tenant_id       = var.azure_tenant_id
 }
 
 provider "google" {
@@ -73,4 +98,22 @@ module "zeus" {
 
   circleci_org_id = var.circleci_org_id
   circleci_token  = var.circleci_token
+}
+
+module "ladon" {
+  source                            = "./modules/ladon"
+
+  domain                            = var.domain
+  subspace                          = var.subspace
+  pgp_key                           = var.pgp_key
+
+  azure_subscription_id           = var.azure_subscription_id
+  azure_client_id                 = var.azure_client_id
+  azure_client_secret             = var.azure_client_secret
+  # TODO: generate directly from provider:tls
+  azure_client_certificate_base64 = var.azure_client_certificate_base64
+  azure_tenant_id                 = var.azure_tenant_id
+
+  gcp_credentials                   = var.gcp_credentials
+  gcp_billing_id                    = var.gcp_billing_id
 }
