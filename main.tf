@@ -113,7 +113,4 @@ module "ladon" {
   # TODO: generate directly from provider:tls
   azure_client_certificate_base64 = var.azure_client_certificate_base64
   azure_tenant_id                 = var.azure_tenant_id
-
-  gcp_credentials                   = var.gcp_credentials
-  gcp_billing_id                    = var.gcp_billing_id
 }

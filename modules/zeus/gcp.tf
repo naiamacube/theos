@@ -72,54 +72,5 @@ resource "google_project_service" "foreach" {
   service  = each.key
 }
 
-# It would have been sick to be able to dynamically create context and push credentials based on infra resource creation, but because of the poor CircleCI API for dealing w/ contexts, OR Terraform poor code control flow management, it's a dead dream for now... Going manual & Moving on.
-/*
-data "http" "create-context" {
-  method = "POST"
-  url    = "${local.circleci_url}/context"
-
-  request_headers = {
-    Accept       = "application/json"
-    Content-Type = "application/json"
-    Circle-Token = var.circleci_token
-  }
-
-  request_body = jsonencode({
-    "name" = local.project,
-    "owner" = {
-      "id" = var.circleci_org_id,
-      "type" = "organization"
-    }
-  })
-}
-
-data "http" "push-gcp-sa-name" {
-  method = "POST"
-  url    = "${local.circleci_url}/context/${jsondecode(data.http.create-context.response_body).id}/environment-variable/gcp_sa_name"
-
-  request_headers = {
-    Accept       = "application/json"
-    Content-Type = "application/json"
-    Circle-Token = var.circleci_token
-  }
-
-  request_body = jsonencode({
-    "value" = "${google_service_account_key.main.name}"
-  })
-}
-
-data "http" "push-gcp-sa-private-key" {
-  method = "POST"
-  url    = "${local.circleci_url}/context/${jsondecode(data.http.create-context.response_body).id}/environment-variable/gcp_sa_credentials"
-
-  request_headers = {
-    Accept       = "application/json"
-    Content-Type = "application/json"
-    Circle-Token = var.circleci_token
-  }
-
-  request_body = jsonencode({
-    "value" = "${google_service_account_key.main.private_key}"
-  })
-}
-*/
+# TODO: add a Cloud NAT for the K8S cluster to access internet
+# TODO: add a Bastion filtered on source IP = current IP and remove exposing enpdoint to public
