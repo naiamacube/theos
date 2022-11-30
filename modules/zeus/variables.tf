@@ -31,25 +31,13 @@ variable "aws_secret_key" {
 }
 
 variable "gcp_credentials" {
-  description = "GCP SA credentials"
+  description = "GCP SA Private Key"
   type        = string
   sensitive   = true
 }
 
 variable "gcp_billing_id" {
   description = "GCP Billing ID"
-  type        = string
-  sensitive   = true
-}
-
-variable "circleci_org_id" {
-  description = "CircleCI Organization UUID"
-  type        = string
-  sensitive   = true
-}
-
-variable "circleci_token" {
-  description = "CircleCI User Token"
   type        = string
   sensitive   = true
 }

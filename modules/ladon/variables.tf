@@ -45,15 +45,3 @@ variable "azure_tenant_id" {
   type        = string
   sensitive   = true
 }
-
-variable "gcp_credentials" {
-  description = "GCP SA credentials"
-  type        = string
-  sensitive   = true
-}
-
-variable "gcp_billing_id" {
-  description = "GCP Billing ID"
-  type        = string
-  sensitive   = true
-}
