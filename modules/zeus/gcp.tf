@@ -1,6 +1,6 @@
 locals {
   project      = "n3-zeus"
-  circleci_url = "https://circleci.com/api/v2"
+  # circleci_url = "https://circleci.com/api/v2"
 }
 
 # This block will require the "cloudresourcemanager.googleapis.com" API to be activated for the master project

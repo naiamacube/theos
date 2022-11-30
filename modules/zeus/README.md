@@ -1,3 +1,3 @@
 # Zeus
 
-K8S deployment + ArgoCD.
+K8S deployment + Argo CD + Argo Workflows.
