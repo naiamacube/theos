@@ -54,7 +54,7 @@ provider "google" {
 }
 
 module "phanes" {
-  source          = "./modules/phanes"
+  source              = "./modules/phanes"
 
   pgp_key             = var.pgp_key
   aws_region          = var.aws_region
@@ -88,12 +88,3 @@ module "zeus" {
   gcp_credentials     = var.gcp_credentials
   gcp_billing_id      = var.gcp_billing_id
 }
-
-# module "ladon" {
-  # source                          = "./modules/ladon"
-  # azure_client_id = var.azure_client_id
-  # azure_client_secret = var.azure_client_secret
-  # azure_client_certificate_base64 = var.azure_client_certificate_base64
-  # azure_subscription_id = var.azure_subscription_id
-  # azure_tenant_id = var.azure_tenant_id
-# }
