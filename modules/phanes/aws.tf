@@ -1,10 +1,11 @@
 locals {
   aws_backend_name = "n3-phanes-tfstate"
+  aws_s3_bucket    = "n3-phanes-tfstate"
   aws_iam_name     = "n3-phanes-tf"
 }
 
 resource "aws_s3_bucket" "backend-storage" {
-  bucket              = local.aws_backend_name
+  bucket              = local.aws_s3_bucket
   object_lock_enabled = true
 }
 

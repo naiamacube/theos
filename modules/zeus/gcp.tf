@@ -2,20 +2,9 @@ locals {
   project = "n3-zeus"
 }
 
-# This block will require the "cloudresourcemanager.googleapis.com" API to be activated for the master project
-data "google_organization" "org" {
-  domain = var.domain
-}
-
 data "google_active_folder" "main" {
-  display_name = var.subspace
-  parent       = "organizations/${data.google_organization.org.org_id}"
-}
-
-# This block will require the "cloudbilling.googleapis.com" API to be activated for the master project
-data "google_billing_account" "main" {
-  billing_account = var.gcp_billing_id
-  open            = true
+  display_name = "naiamacube"
+  parent       = "organizations/${var.gcp_organization_id}"
 }
 
 resource "google_project" "zeus" {
@@ -23,7 +12,7 @@ resource "google_project" "zeus" {
   project_id      = local.project
   folder_id       = data.google_active_folder.main.name
 
-  billing_account = data.google_billing_account.main.id
+  billing_account = var.gcp_billing_id
 }
 
 # This block will require "iam.googleapis.com" API to be activated for the master project

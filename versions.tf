@@ -8,13 +8,9 @@ terraform {
     }
   }
   required_providers {
-    local = {
-      source = "hashicorp/local"
-      version = "2.2.3"
-    }
     aws = {
       source  = "hashicorp/aws"
-      version = "4.37.0"
+      version = "4.44.0"
     }
     azuread = {
       source  = "hashicorp/azuread"
@@ -26,7 +22,7 @@ terraform {
     }
     google = {
       source  = "hashicorp/google"
-      version = "4.41.0"
+      version = "4.44.1"
     }
   }
 
@@ -54,60 +50,50 @@ provider "azurerm" {
 
 provider "google" {
   credentials = var.gcp_credentials
-  region      = var.gcp_region
+  zone        = var.gcp_zone
 }
 
 module "phanes" {
   source          = "./modules/phanes"
 
-  domain          = var.domain
-  subspace        = var.subspace
-  pgp_key         = var.pgp_key
-
-  aws_access_key  = var.aws_access_key_id
-  aws_secret_key  = var.aws_secret_access_key
-
-  gcp_credentials = var.gcp_credentials
+  pgp_key             = var.pgp_key
+  aws_region          = var.aws_region
+  aws_access_key      = var.aws_access_key_id
+  aws_secret_key      = var.aws_secret_access_key
+  gcp_zone            = var.gcp_zone
+  gcp_organization_id = var.gcp_organization_id
+  gcp_credentials     = var.gcp_credentials
 }
 
 module "thalassa" {
   source          = "./modules/thalassa"
 
-  organization    = var.organization
   pgp_key         = var.pgp_key
-
   tfe_hostname    = var.tfe_hostname
   tfe_token       = var.tfe_token
-
+  aws_region      = var.aws_region
   aws_access_key  = var.aws_access_key_id
   aws_secret_key  = var.aws_secret_access_key
 }
 
 module "zeus" {
-  source          = "./modules/zeus"
+  source              = "./modules/zeus"
 
-  domain          = var.domain
-  subspace        = var.subspace
-  pgp_key         = var.pgp_key
-
-  aws_access_key  = var.aws_access_key_id
-  aws_secret_key  = var.aws_secret_access_key
-
-  gcp_credentials = var.gcp_credentials
-  gcp_billing_id  = var.gcp_billing_id
+  pgp_key             = var.pgp_key
+  aws_region          = var.aws_region
+  aws_access_key      = var.aws_access_key_id
+  aws_secret_key      = var.aws_secret_access_key
+  gcp_zone            = var.gcp_zone
+  gcp_organization_id = var.gcp_organization_id
+  gcp_credentials     = var.gcp_credentials
+  gcp_billing_id      = var.gcp_billing_id
 }
 
-module "ladon" {
-  source                            = "./modules/ladon"
-
-  domain                            = var.domain
-  subspace                          = var.subspace
-  pgp_key                           = var.pgp_key
-
-  azure_subscription_id           = var.azure_subscription_id
-  azure_client_id                 = var.azure_client_id
-  azure_client_secret             = var.azure_client_secret
-  # TODO: generate directly from provider:tls
-  azure_client_certificate_base64 = var.azure_client_certificate_base64
-  azure_tenant_id                 = var.azure_tenant_id
-}
+# module "ladon" {
+  # source                          = "./modules/ladon"
+  # azure_client_id = var.azure_client_id
+  # azure_client_secret = var.azure_client_secret
+  # azure_client_certificate_base64 = var.azure_client_certificate_base64
+  # azure_subscription_id = var.azure_subscription_id
+  # azure_tenant_id = var.azure_tenant_id
+# }

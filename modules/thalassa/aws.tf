@@ -1,5 +1,5 @@
 locals {
-  aws_s3_bucket = "n3-thalassa"
+  aws_s3_bucket = "n3-thalassa-tfstate"
   aws_iam_name  = "n3-thalassa-tf"
 }
 

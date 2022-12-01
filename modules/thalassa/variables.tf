@@ -1,8 +1,3 @@
-variable "organization" {
-  description = "Organization"
-  type        = string
-}
-
 variable "tfe_hostname" {
   description = "Terraform Cloud Hostname"
   type        = string
@@ -21,6 +16,12 @@ variable "tfe_token" {
 
 variable "pgp_key" {
   description = "PGP Public Key"
+  type        = string
+  sensitive   = true
+}
+
+variable "aws_region" {
+  description = "AWS Region"
   type        = string
   sensitive   = true
 }

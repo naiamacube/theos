@@ -1,18 +1,3 @@
-variable "organization" {
-  description = "Organization"
-  type        = string
-}
-
-variable "domain" {
-  description = "Organization domain"
-  type        = string
-}
-
-variable "subspace" {
-  description = "Organization Subspace"
-  type        = string
-}
-
 variable "pgp_key" {
   description = "PGP Public Key"
   type        = string
@@ -81,6 +66,12 @@ variable "azure_tenant_id" {
 
 variable "gcp_credentials" {
   description = "GCP SA Private Key"
+  type        = string
+  sensitive   = true
+}
+
+variable "gcp_organization_id" {
+  description = "GCP Organization ID"
   type        = string
   sensitive   = true
 }

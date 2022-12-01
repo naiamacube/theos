@@ -1,6 +1,6 @@
 resource "tfe_workspace" "main" {
-  name = "n3-thalassa"
-  organization = var.organization
+  name         = "n3-thalassa"
+  organization = "naiama"
 }
 
 resource "tfe_variable" "aws-iam-user-arn" {
