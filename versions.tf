@@ -12,14 +12,6 @@ terraform {
       source  = "hashicorp/aws"
       version = "4.44.0"
     }
-    azuread = {
-      source  = "hashicorp/azuread"
-      version = "2.30.0"
-    }
-    azurerm = {
-      source = "hashicorp/azurerm"
-      version = "3.33.0"
-    }
     google = {
       source  = "hashicorp/google"
       version = "4.44.1"
@@ -33,19 +25,6 @@ provider "aws" {
   access_key = var.aws_access_key_id
   secret_key = var.aws_secret_access_key
   region     = var.aws_region
-}
-
-provider "azuread" {
-  client_id     = var.azure_client_id
-  client_secret = var.azure_client_secret
-  tenant_id     = var.azure_tenant_id
-}
-
-provider "azurerm" {
-  client_id       = var.azure_client_id
-  client_secret   = var.azure_client_secret
-  subscription_id = var.azure_subscription_id
-  tenant_id       = var.azure_tenant_id
 }
 
 provider "google" {
