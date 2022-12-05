@@ -1,7 +1,7 @@
 resource "google_compute_image" "leicester" {
   name = "leicester"
 
-  source_image = "naiama/leicester:0.1.0"
+  source_image = "registry.hub.docker.com/naiama/leicester:0.1.0"
 }
 
 resource "google_compute_address" "vault-static" {
