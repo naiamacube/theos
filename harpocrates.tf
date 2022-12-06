@@ -1,6 +1,14 @@
+data "google_container_registry_image" "leicester" {
+  name    = "leicester"
+  project = "n3-theos"
+}
+
 resource "google_compute_image" "leicester" {
   name    = "leicester"
   project = "n3-theos"
+  raw_disk {
+    source = data.google_container_registry_image.leicester.image_url
+  }
 }
 
 resource "google_compute_address" "vault-static" {
@@ -39,7 +47,7 @@ resource "google_compute_instance" "vault" {
   }
 
   # The following option should be enabled in production.
-  # DO NOT USE AS-IS
+  # DO NOT USE WITH CURRENT SETUP IN PRODUCTION ENV.
   # confidentials_instance_config {
     # enable_confidential_compute = true
   # }
