@@ -1,58 +1,72 @@
-data "google_container_registry_image" "leicester" {
-  name    = "leicester"
-  project = "n3-theos"
+data "google_project" "main" {}
+
+resource "google_service_account" "main" {
+  account_id   = "n3-theos-harpocrates"
+  project      = data.google_project.main.number
 }
 
-resource "google_compute_image" "leicester" {
-  name    = "leicester"
-  project = "n3-theos"
-  raw_disk {
-    source = data.google_container_registry_image.leicester.image_url
+resource "google_container_cluster" "main" {
+  name     = "harpocrates-cluster"
+  location = var.gcp_zone
+
+  remove_default_node_pool = true
+  initial_node_count       = 1
+
+  service_external_ips_config {
+    enabled = false
   }
 }
 
-resource "google_compute_address" "vault-static" {
-  name = "vault-static"
+resource "google_container_node_pool" "main" {
+  name       = "harpocrate-node-pool"
+
+  location   = var.gcp_zone
+  cluster    = google_container_cluster.main.name
+  node_count = 1
+
+  management {
+    auto_repair  = true
+    auto_upgrade = true
+  }
+
+  node_config {
+    machine_type = "e2-micro"
+    disk_type    = "pd-standard"
+    disk_size_gb = 10
+
+    service_account = google_service_account.main.email
+    oauth_scopes    = [
+      "https://www.googleapis.com/auth/cloud-platform"
+    ]
+  }
 }
 
-resource "google_compute_disk" "vault" {
-  name  = "vault-boot"
+data "google_client_config" "default" {}
 
-  type  = "sd"
-  zone  = var.gcp_zone
-  image = google_compute_image.leicester.self_link
-  size  = 10
+provider "helm" {
+  kubernetes {
+    host = google_container_cluster.main.endpoint
+
+    token = data.google_client_config.default.access_token
+    cluster_ca_certificate = base64decode(
+      google_container_cluster.main.master_auth.0.cluster_ca_certificate
+    )   
+  }
+  experiments {
+    manifest = true
+  }
 }
 
-resource "google_compute_instance" "vault" {
-  name         = "vault"
+resource "helm_release" "vault" {
+  name = "vault"
 
-  machine_type = "e2-micro"
-  zone         = var.gcp_zone
+  repository       = "https://helm.releases.hashicorp.com"
+  chart            = "vault"
+  namespace        = "vault"
+  version          = "0.6.0"
+  create_namespace = true
 
-  boot_disk {
-    initialize_params {
-      image = google_compute_disk.vault.self_link
-    }
-  }
-
-  shielded_instance_config {
-    enable_secure_boot = true
-  }
-
-  network_interface {
-    access_config {
-      nat_ip = google_compute_address.vault-static.address
-    }
-  }
-
-  # The following option should be enabled in production.
-  # DO NOT USE WITH CURRENT SETUP IN PRODUCTION ENV.
-  # confidentials_instance_config {
-    # enable_confidential_compute = true
-  # }
-  # 
-  # scheduling {
-    # on_host_maintenance = "TERMINATE"
-  # }
+  depends_on = [ 
+    google_container_node_pool.main
+  ]
 }

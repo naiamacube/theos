@@ -30,6 +30,7 @@ provider "aws" {
 provider "google" {
   credentials = var.gcp_credentials
   zone        = var.gcp_zone
+  project     = "n3-theos"
 }
 
 module "phanes" {
