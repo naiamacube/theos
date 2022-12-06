@@ -1,8 +1,6 @@
-data "google_project" "main" {}
-
 resource "google_service_account" "main" {
   account_id   = "n3-theos-harpocrates"
-  project      = data.google_project.main.number
+  project      = "n3-theos"
 }
 
 resource "google_container_cluster" "main" {
