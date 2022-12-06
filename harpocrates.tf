@@ -1,11 +1,16 @@
+locals {
+  project = "n3-theos"
+}
+
 resource "google_service_account" "main" {
-  account_id   = "n3-theos-harpocrates"
-  project      = "n3-theos"
+  account_id = "${local.project}-harpocrates"
+  project    = local.project
 }
 
 resource "google_container_cluster" "main" {
-  name     = "harpocrates-cluster"
+  name     = "${local.project}-harpocrates-cluster"
   location = var.gcp_zone
+  project  = local.project
 
   remove_default_node_pool = true
   initial_node_count       = 1
@@ -16,7 +21,7 @@ resource "google_container_cluster" "main" {
 }
 
 resource "google_container_node_pool" "main" {
-  name       = "harpocrate-node-pool"
+  name       = "${local.project}-harpocrate-node-pool"
 
   location   = var.gcp_zone
   cluster    = google_container_cluster.main.name
