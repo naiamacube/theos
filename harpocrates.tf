@@ -21,9 +21,10 @@ resource "google_container_cluster" "main" {
 }
 
 resource "google_container_node_pool" "main" {
-  name       = "${local.project}-harpocrate-node-pool"
+  name     = "${local.project}-harpocrate-node-pool"
+  location = var.gcp_zone
+  project  = local.project
 
-  location   = var.gcp_zone
   cluster    = google_container_cluster.main.name
   node_count = 1
 
