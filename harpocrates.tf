@@ -65,7 +65,7 @@ resource "helm_release" "vault" {
   name = "vault"
 
   repository       = "https://helm.releases.hashicorp.com"
-  chart            = "hashicorp/vault"
+  chart            = "vault"
   namespace        = "vault"
   version          = "0.23.0"
   create_namespace = true
