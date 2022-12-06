@@ -1,7 +1,6 @@
 resource "google_compute_image" "leicester" {
-  name = "leicester"
-
-  source_image = "registry.hub.docker.com/naiama/leicester:0.1.0"
+  name    = "leicester"
+  project = "n3-theos"
 }
 
 resource "google_compute_address" "vault-static" {
