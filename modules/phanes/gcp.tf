@@ -7,8 +7,6 @@ data "google_active_folder" "main" {
   parent       = "organizations/${var.gcp_organization_id}"
 }
 
-data "google_project" "current" { }
-
 resource "google_project" "phanes" {
   name       = local.project
   project_id = local.project
@@ -18,7 +16,7 @@ resource "google_project" "phanes" {
 # This block will require "iam.googleapis.com" API to be activated for the master project
 resource "google_service_account" "tf" {
   account_id = "phanes-tf"
-  project    = google_project.phanes.number
+  project    = local.project
 }
 
 resource "google_service_account_key" "tf" {
